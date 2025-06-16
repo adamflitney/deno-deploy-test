@@ -15,5 +15,6 @@ serve((req) => {
   if (url.pathname === "/error") {
     throw new Error("Simulated server crash: error thrown on /error");
   }
+  console.log("[INFO] Sent normal hello response to", url.pathname);
   return new Response("Hello from Deno! Visit /error to simulate a crash.");
 });
