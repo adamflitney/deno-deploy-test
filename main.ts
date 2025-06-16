@@ -12,7 +12,7 @@ setTimeout(() => {
 
 serve((req) => {
   if (crashed) {
-    return new Response("Server crashed!", { status: 500 });
+    throw new Error("Simulated server crash after 60 seconds");
   }
   return new Response(
     "Hello from Deno! The server will crash after 60 seconds."
