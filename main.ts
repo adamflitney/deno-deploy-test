@@ -7,7 +7,7 @@ let crashed = false;
 // Crash after 60 seconds
 setTimeout(() => {
   crashed = true;
-  Deno.exit(1);
+  // Deno.exit(1); // Not allowed on Deno Deploy
 }, 60000);
 
 serve((req) => {
