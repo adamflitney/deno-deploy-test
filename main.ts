@@ -10,7 +10,10 @@ setTimeout(() => {
   // Deno.exit(1); // Not allowed on Deno Deploy
 }, 60000);
 
-serve((_req) => {
-  // Simulate a crash only when a request is received
-  throw new Error("Simulated server crash: error thrown on every request");
+serve((req) => {
+  const url = new URL(req.url);
+  if (url.pathname === "/error") {
+    throw new Error("Simulated server crash: error thrown on /error");
+  }
+  return new Response("Hello from Deno! Visit /error to simulate a crash.");
 });
